@@ -31,7 +31,7 @@ void lerpratos(int numerodoprato, struct prato *pratos)
 {
     struct prato p;
 
-    printf("Escreva o codigo, preco e descricao do prato %d:\n", numerodoprato); scanf("%d %lf %s", &p.codprat, &p.preco, p.desc);
+    printf("Escreva o codigo, preco e descricao do prato %d:\n", numerodoprato); scanf("%d %lf %[^\n]", &p.codprat, &p.preco, p.desc);
     printf("\n");
 
     *pratos = p;
@@ -42,7 +42,7 @@ void lerrests(int numerodorest, rest_t *rests)
 {
     rest_t r;
 
-    printf("Digite o codigo e nome do restaurante %d:\n", numerodorest); scanf("%d %s", &r.codrest, r.nome);
+    printf("Digite o codigo e nome do restaurante %d:\n", numerodorest); scanf("%d %[^\n]", &r.codrest, r.nome);
     printf("---------------------------------------------------------\n");
 
     //ler todos os pratos do restaurante
