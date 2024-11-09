@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 /*
  NOTA (PEDRO):
  * Eu usei ponteiros para mudar os valores das structs usando funções.
@@ -18,9 +17,6 @@
 
 #include <stdio.h>
 #include <string.h>
-=======
-#include <stdio.h>
->>>>>>> c4b3d154163a40f17a9e95fbe50756ff59ea5be4
 
 //largura das strings
 #define STRLEN 20
@@ -46,7 +42,6 @@ struct rest {
 //definir "struct rest" como um tipo "rest_t"
 typedef struct rest rest_t;
 
-<<<<<<< HEAD
 //Funções para operar as structs:
 
     void renomearrest(rest_t *r)
@@ -223,7 +218,6 @@ typedef struct rest rest_t;
     }
 
 //Função main:
-=======
 void deletarrest(rest_t *r)
 {
     char opc;
@@ -376,7 +370,6 @@ void logrest(rest_t *r)
     } 
 }
 
->>>>>>> c4b3d154163a40f17a9e95fbe50756ff59ea5be4
 int main(void)
 {
     rest_t rests[N_REST];
@@ -401,19 +394,11 @@ int main(void)
         printf("Codigo do restaurante para login (digite -1 para sair): "); scanf("%d", &logged);
 
         for(int i = 0; i < N_REST; i ++)
-<<<<<<< HEAD
         if(rests[i].codrest == logged && logged >= 0)
-=======
-        if(rests[i].codrest == logged)
->>>>>>> c4b3d154163a40f17a9e95fbe50756ff59ea5be4
         {
             logrest(&rests[i]);
         }
     }
 
     return 0;
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> c4b3d154163a40f17a9e95fbe50756ff59ea5be4
