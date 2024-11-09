@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 #include <stdio.h>
 
 #define STRLEN 20
@@ -113,7 +112,6 @@ int main(void)
 
     return 0;
 }
-=======
 #include <stdio.h>
 
 //largura das strings
@@ -243,4 +241,3 @@ int main(void)
 
     return 0;
 }
->>>>>>> c4b3d154163a40f17a9e95fbe50756ff59ea5be4
