@@ -7,9 +7,9 @@
 //número máximo de pratos
 #define N_PRATOS 4
 //número máximo de restaurantes
-#define N_REST 1
+#define N_REST 3
 //número máximo de usuários
-#define N_USUARIO 1
+#define N_USUARIO 2
 
 //structure para os pratos. OBS: Chame usando "struct prato"
 struct prato{
