@@ -14,6 +14,7 @@
 //structure para os pratos. OBS: Chame usando "struct prato"
 struct prato{
     int codprat;
+    int codrest;
     double preco;
     char desc[STRLEN];
 };
@@ -58,7 +59,10 @@ typedef struct usuario user_t;
 
         //ler todos os pratos do restaurante
         for(int i = 0; i < N_PRATOS; i ++)
+        {
             lerpratos(i + 1, &r.cardapio[i]);
+            r.cardapio[i].codrest = r.codrest;
+        }
 
         printf("---------------------------------------------------------\n");
 
@@ -148,40 +152,44 @@ typedef struct usuario user_t;
                     
                     for(int i = 0; i < N_REST; i ++)
                     {
-                        printf("%s:\n\n", r[i].nome);
-
                         for(int j = 0; j < N_PRATOS; j ++)
                         {
                             for(int k = 0; k < u->n_prat; k ++)
-                                if(r[i].cardapio[j].codprat == u->carrinho[k].codprat)
+                                if(r[i].cardapio[j].codprat == u->carrinho[k].codprat && r[i].codrest == u->carrinho[k].codrest)
                                 {
                                     total += r[i].cardapio[j].preco;
                                     tmp_pratos ++;
                                 }
 
-                            if(tmp_pratos > 0 && tmp_pratos != 1)
-                                printf("- %dx %s - R$%.2f (Totalizando R$%.2f)\n", tmp_pratos, r[i].cardapio[j].desc, r[i].cardapio[j].preco, tmp_pratos * r[i].cardapio[j].preco);
-                            else if(tmp_pratos == 1)
-                                printf("- %s - R$%.2f\n", r[i].cardapio[j].desc, r[i].cardapio[j].preco);
+                            if(tmp_pratos > 0)
+                            {
+                                if(tmp_pratos != 1)
+                                    printf("- %dx %s - R$%.2f (Totalizando R$%.2f)", tmp_pratos, r[i].cardapio[j].desc, r[i].cardapio[j].preco, tmp_pratos * r[i].cardapio[j].preco);
+                                else
+                                    printf("- %s - R$%.2f", r[i].cardapio[j].desc, r[i].cardapio[j].preco);
+
+                                printf(" do restaurante %s\n", r[i].nome);
+                            }
 
                             tmp_pratos = 0;
                         }
-                        printf("\n\n- TOTAL: R$%.2f\n", total);
-                        printf("**************************************************\n\n");
-
-                        printf("Qual sera a forma de pagamento?\n");
-                        printf("1 - Dinheiro\n");
-                        printf("2 - PIX\n");
-                        printf("3 - Cartao de debito\n");
-                        printf("4 - Cartao de credito\n");
-                        printf("0 - Cancelar compra\n");
-
-                        printf("> "); scanf(" %[^\n]");
-
-                        free(u->carrinho);
-                        u->carrinho = NULL;
-                        u->n_prat = 0;
                     }
+
+                    printf("\n\n- TOTAL: R$%.2f\n", total);
+                    printf("**************************************************\n\n");
+
+                    printf("Qual sera a forma de pagamento?\n");
+                    printf("1 - Dinheiro\n");
+                    printf("2 - PIX\n");
+                    printf("3 - Cartao de debito\n");
+                    printf("4 - Cartao de credito\n");
+                    printf("0 - Cancelar compra\n");
+
+                    printf("> "); scanf(" %[^\n]");
+
+                    free(u->carrinho);
+                    u->carrinho = NULL;
+                    u->n_prat = 0;
                 }
             }
             else if(opc > 0)
